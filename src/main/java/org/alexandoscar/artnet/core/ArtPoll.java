@@ -20,25 +20,25 @@ public class ArtPoll extends ArtPacket {
      * Constructor for an ArtPoll packet, using default values
      */
     public ArtPoll(){
-        new ArtPoll(this.OpCodeHi, this.OpCodeLo, this.ProtVerHi, this.ProtVerLo, this.TalkToMe, this.Priority);
+        new ArtPoll(this.OpCodeLo, this.OpCodeHi, this.ProtVerHi, this.ProtVerLo, this.TalkToMe, this.Priority);
     };
 
     /**
      * Constructor for ArtPoll packet, all but "Art-Net"0x00 are parameters
-     * @param _OpCodeHi OpCode Hi
      * @param _OpCodeLo OpCode Lo
+     * @param _OpCodeHi OpCode Hi
      * @param _ProtVerHi ProtVer Hi
      * @param _ProtVerLo ProtVer Lo
      * @param _TalkToMe TalkToMe
      * @param _Priority Priority
      */
     public ArtPoll(byte _OpCodeHi, byte _OpCodeLo, byte _ProtVerHi, byte _ProtVerLo, byte _TalkToMe, byte _Priority){
-        artPollPacket = new byte[14];
+        artPacketData = new byte[14];
         for (int i = 0; i < 8; i++){
             this.setByte(i+1, this.ArtNetString[i]);
         }
-        setByte(8, _OpCodeHi);
-        setByte(9, _OpCodeLo);
+        setByte(8, _OpCodeLo);
+        setByte(9, _OpCodeHi);
         setByte(10, _ProtVerHi);
         setByte(11, _ProtVerLo);
         setByte(12, _TalkToMe);

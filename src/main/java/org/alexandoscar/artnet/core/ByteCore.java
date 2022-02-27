@@ -1,14 +1,14 @@
 package org.alexandoscar.artnet.core;
 
-import java.net.DatagramPacket;
+/**
+ * Used for all byte specific operations with ArtPacket
+ */
+public class ByteCore {
 
-public class ArtPacket {
-    DatagramPacket Packet;
-    public byte[] artPacketData;
-    public byte[] ArtNetString = {(byte)0x41, (byte)0x72, (byte)0x74, (byte)0x2D, (byte)0x4E, (byte)0x65, (byte)0x74, (byte)0x00};
-    byte Filler = (byte)0x00;
+    protected byte[] Data;
 
-    public ArtPacket() {
+    public void initialiseData(int _Length){
+        Data = new byte[_Length];
     }
 
     /**
@@ -17,7 +17,7 @@ public class ArtPacket {
      * @param _Value Byte Value
      */
     public void setByte(int _index, byte _Value){
-        this.artPacketData[_index] = _Value;
+        this.Data[_index] = _Value;
     }
 
     /**
@@ -26,7 +26,7 @@ public class ArtPacket {
      * @return Specified Byte
      */
     public byte getByte(int _index){
-        return this.artPacketData[_index];
+        return this.Data[_index];
     }
 
     /**
@@ -61,34 +61,7 @@ public class ArtPacket {
      */
     public byte[] getByteGroup(int _index, int _length){
         byte[] tempArray = new byte[_length];
-        System.arraycopy(this.artPacketData, _index, tempArray, 0, _length);
+        System.arraycopy(this.Data, _index, tempArray, 0, _length);
         return tempArray;
     }
-
-    /**
-     * Sets all the bytes in a packet
-     * @param _packet Byte array
-     */
-    public void setPacket(byte[] _packet){
-        this.artPacketData = _packet;
-    }
-
-    /**
-     * Returns a byte array of all the values in the packet
-     * @return Byte array
-     */
-    public byte[] getPacket(){
-        return this.artPacketData;
-    }
-
-
-
-//    public ArtPacket(byte[] _data, int _length, InetAddress _address, int _port) throws IOException {
-//        this.Packet = new DatagramPacket(_data, 0, _length, _address, _port);
-//    };
-
-//    public void testArtPoll() throws IOException{
-//        System.out.println("Sending Packet");
-//        //this.sendPacket();
-//    }
 }
