@@ -88,7 +88,7 @@ public class ArtPacket {
      * @return Byte array
      */
     public byte[] getPacket(){
-        return new byte[1];
+        return this.artPacketData.clone();
     }
 
 }

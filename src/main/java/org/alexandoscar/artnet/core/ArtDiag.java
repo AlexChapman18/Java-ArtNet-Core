@@ -32,7 +32,7 @@ public class ArtDiag extends ArtPacket {
         this.packetLength = 14;
         artPacketData = new byte[14];
         for (int i = 0; i < 8; i++){
-            this.setByte(i+1, this.ArtNetString[i]);
+            this.setByte(i, this.ArtNetString[i]);
         }
         setByte(8, _OpCodeLo);
         setByte(9, _OpCodeHi);

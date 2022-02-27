@@ -32,11 +32,11 @@ public class ArtPoll extends ArtPacket {
      * @param _TalkToMe TalkToMe
      * @param _Priority Priority
      */
-    public ArtPoll(byte _OpCodeHi, byte _OpCodeLo, byte _ProtVerHi, byte _ProtVerLo, byte _TalkToMe, byte _Priority){
+    public ArtPoll(byte _OpCodeLo, byte _OpCodeHi, byte _ProtVerHi, byte _ProtVerLo, byte _TalkToMe, byte _Priority){
         this.packetLength = 14;
         artPacketData = new byte[14];
         for (int i = 0; i < 8; i++){
-            this.setByte(i+1, this.ArtNetString[i]);
+            this.setByte(i, this.ArtNetString[i]);
         }
         setByte(8, _OpCodeLo);
         setByte(9, _OpCodeHi);

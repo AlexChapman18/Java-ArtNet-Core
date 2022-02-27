@@ -1,5 +1,6 @@
 package org.alexandoscar.artnet.core;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
@@ -38,7 +39,7 @@ public class ArtTod extends ArtPacket{
         this.packetLength = 56;
         artPacketData = new byte[56];
         for (int i = 0; i < 8; i++){
-            this.setByte(i+1, this.ArtNetString[i]);
+            this.setByte(i, this.ArtNetString[i]);
         }
         setByte(8, _OpCodeLo);
         setByte(9, _OpCodeHi);
@@ -53,8 +54,15 @@ public class ArtTod extends ArtPacket{
         }
     }
 
-    public void setAddress(byte[] _Address){
-        Address = _Address;
+    public void setAddress(){
+        byte[] _Address = new byte[32];
+        Arrays.fill(_Address, (byte)0x00);
+        _Address[1] = (byte)0x01;
+        _Address[2] = (byte)0x02;
+        _Address[3] = (byte)0x03;
+        for (int i = 0; i < 32; i++){
+            this.setByte(i+23, _Address[i]);
+        }
     }
 
     public static void main(String[] args) {

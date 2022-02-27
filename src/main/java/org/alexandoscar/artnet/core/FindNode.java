@@ -9,7 +9,8 @@ public class FindNode {
         ArtPacket ArtPollPacket = new ArtPoll();
         DatagramPacket rawPacketOne = new DatagramPacket(ArtPollPacket.getPacket(), 0, ArtPollPacket.packetLength, ArtPacket.ArtAddress, ArtPacket.port);
 
-        ArtPacket ArtTodPacket = new ArtTod();
+        ArtTod ArtTodPacket = new ArtTod();
+        ArtTodPacket.setAddress();
         DatagramPacket rawPacketTwo = new DatagramPacket(ArtTodPacket.getPacket(), 0, ArtTodPacket.packetLength, ArtPacket.ArtAddress, ArtPacket.port);
 
         ArtPollPacket.setByte(12, (byte) 0x00);
