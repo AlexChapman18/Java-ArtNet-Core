@@ -1,4 +1,5 @@
 package org.alexandoscar.artnet.core;
 
-public class Diag {
+public class ArtTod {
+
 }

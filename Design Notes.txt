@@ -1,0 +1,9 @@
+Have a Superclass "ArtNet" that holds the basic functionality of each packet.
+Also holds the data for the "Art-Net"0x00 byte at the start.
+
+Have subclasses "ArtPoll", "ArtReply", "ArtDiag", "ArtDMX"(For sending DMX)
+Have tests for each class
+
+Have a Packet Class That is used for sending and recieving Datagram 
+packets(Not artnet specific)
+
