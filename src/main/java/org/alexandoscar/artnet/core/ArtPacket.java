@@ -1,14 +1,24 @@
 package org.alexandoscar.artnet.core;
 
 import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class ArtPacket {
     DatagramPacket Packet;
     public byte[] artPacketData;
+    public int packetLength;
     public byte[] ArtNetString = {(byte)0x41, (byte)0x72, (byte)0x74, (byte)0x2D, (byte)0x4E, (byte)0x65, (byte)0x74, (byte)0x00};
-    byte Filler = (byte)0x00;
+    public byte Filler = (byte)0x00;
+    public static int port = 6454;
+    public static InetAddress ArtAddress;
 
-    public ArtPacket() {
+    static {
+        try {
+            ArtAddress = InetAddress.getByName("2.255.255.255");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -78,17 +88,7 @@ public class ArtPacket {
      * @return Byte array
      */
     public byte[] getPacket(){
-        return this.artPacketData;
+        return new byte[1];
     }
 
-
-
-//    public ArtPacket(byte[] _data, int _length, InetAddress _address, int _port) throws IOException {
-//        this.Packet = new DatagramPacket(_data, 0, _length, _address, _port);
-//    };
-
-//    public void testArtPoll() throws IOException{
-//        System.out.println("Sending Packet");
-//        //this.sendPacket();
-//    }
 }

@@ -20,7 +20,7 @@ public class ArtPoll extends ArtPacket {
      * Constructor for an ArtPoll packet, using default values
      */
     public ArtPoll(){
-        new ArtPoll(this.OpCodeLo, this.OpCodeHi, this.ProtVerHi, this.ProtVerLo, this.TalkToMe, this.Priority);
+        this((byte)0x00, (byte)0x20, (byte)0x00, (byte)0x0e, (byte)0x02, (byte)0x00);
     };
 
     /**
@@ -33,6 +33,7 @@ public class ArtPoll extends ArtPacket {
      * @param _Priority Priority
      */
     public ArtPoll(byte _OpCodeHi, byte _OpCodeLo, byte _ProtVerHi, byte _ProtVerLo, byte _TalkToMe, byte _Priority){
+        this.packetLength = 14;
         artPacketData = new byte[14];
         for (int i = 0; i < 8; i++){
             this.setByte(i+1, this.ArtNetString[i]);

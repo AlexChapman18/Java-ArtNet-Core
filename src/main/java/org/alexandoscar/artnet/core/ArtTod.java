@@ -20,11 +20,7 @@ public class ArtTod extends ArtPacket{
      * Constructor for an ArtTod packet, using default values
      */
     public ArtTod(){
-        Arrays.fill(this.Address, (byte) 0x00);
-        setByte(this.Address, (byte)0x01);
-        setByte(this.Address, (byte)0x01);
-        setByte(this.Address, (byte)0x01);
-        new ArtTod(this.OpCodeLo, this.OpCodeHi, this.ProtVerHi, this.ProtVerLo, this.Net, this.Command, this.AddCount, this.Address);
+        this((byte)0x00, (byte)0x80, (byte)0x00, (byte)0x0e, (byte)0x00, (byte) 0x00, (byte) 0x04, new byte[32]);
     }
 
     /**
@@ -39,6 +35,7 @@ public class ArtTod extends ArtPacket{
      * @param _Address Address byte array
      */
     public ArtTod(byte _OpCodeLo, byte _OpCodeHi, byte _ProtVerHi, byte _ProtVerLo, byte _Net, byte _Command, byte _AddCount, byte[] _Address){
+        this.packetLength = 56;
         artPacketData = new byte[56];
         for (int i = 0; i < 8; i++){
             this.setByte(i+1, this.ArtNetString[i]);
@@ -54,6 +51,10 @@ public class ArtTod extends ArtPacket{
         for (int i = 0; i < 32; i++){
             this.setByte(i+23, _Address[i]);
         }
+    }
+
+    public void setAddress(byte[] _Address){
+        Address = _Address;
     }
 
     public static void main(String[] args) {

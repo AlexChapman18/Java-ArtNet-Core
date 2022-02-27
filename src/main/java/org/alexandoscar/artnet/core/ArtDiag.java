@@ -29,6 +29,7 @@ public class ArtDiag extends ArtPacket {
      * @param _LengthHi Length Hi
      */
     public ArtDiag(byte _OpCodeLo, byte _OpCodeHi, byte _ProtVerHi, byte _ProtVerLo, byte _Priority, byte _LengthHi){
+        this.packetLength = 14;
         artPacketData = new byte[14];
         for (int i = 0; i < 8; i++){
             this.setByte(i+1, this.ArtNetString[i]);
